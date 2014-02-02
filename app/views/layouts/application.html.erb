@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sistema Escolar</title>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+
+  <%= javascript_include_tag "application" %>
+
+  <meta name="rails-controller" content="<%= controller.controller_name %>" />
+
+  <meta name="rails-action" content="<%= controller.action_name %>" />
+
+  <%= csrf_meta_tags %>
+
+  <!-- Espaço do corpo do site para o topo e o rodapé -->
+  <style type="text/css">
+      body {
+          padding-top: 60px;
+          padding-bottom: 40px;
+      }
+  </style>
+</head>
+<body>
+
+<!-- Menu fixo do site -->
+<div class="navbar navbar navbar-fixed-top">
+<div class="navbar-inner">
+  <div class="container">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <span class="brand">Sistema Escolar</span>
+    <div class="nav-collapse collapse">
+      <ul class="nav">
+        <!-- acesso a alunos -->
+        <li class="ativo" id="provas">
+          <%= link_to 'Provas', provas_path %>
+        </li>
+
+        <!-- acesso a turma -->
+        <li class="ativo" id="turmas">
+          <%= link_to 'Turma', turma_materias_path %>
+        </li>
+        <!-- acesso a matricula -->
+        <li class="ativo" id="matriculas">
+          <%= link_to 'Matrícula', alunos_path %>
+        </li>
+
+
+        <!-- opções de cadastro -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastro <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Professor', professores_path %></li>
+            <li><%= link_to 'Matéria', materias_path %></li>
+            <li><%= link_to 'Turma', turmas_path %></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+</div>
+<!-- Conteudo do site  -->
+
+<div class="container">
+  <div  id="flash_notice" style="padding-top: 40px;">
+    <% flash.each do |key, value| %>
+        <div class="alert alert-success fade in">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="padding:3px 6px 0 0;">×</button>
+          <%= value %>
+        </div>
+    <% end %>
+    <% flash.discard %>
+  </div>
+  <%= yield %>
+</div>
+
+<!-- Rodapé da Página -->
+<div id="footer">
+  <div class="container">
+    <p><span>Sistema Escolar</span></p>
+    <p class="muted credit">Contato: <%= mail_to "marcos.ti@live.com", "Marcos Aurélio"  %></p>
+  </div>
+</div>
+
+<!-- Script destaca botão/menu fixo  -->
+<script>
+    $(".ativo").removeClass( "active" );
+    $(menu).addClass( "active" );
+</script>
+</body>
+</html>

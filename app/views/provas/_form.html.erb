@@ -1,0 +1,51 @@
+<!-- legenda -->
+<legend><%=  %>Provas</legend>
+
+<%= form_for(@prova) do |f| %>
+
+    <!-- Mostra os erros -->
+    <% if @prova.errors.any? %>
+        <div id="error_explanation">
+          <h2><strong>Erros no preenchimento, verifique</strong></h2>
+          <ul>
+            <% @prova.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <!-- mostra informações no select -->
+    <div class="field">
+      <%= f.label :Aluno %><br>
+      <%= f.collection_select(:aluno_id, Aluno.order(:nome), :id, :nome, :prompt => false) %>
+    </div>
+
+    <!-- mostra informações no select -->
+    <div class="field">
+      <%= f.label :Matéria %><br>
+      <%= f.collection_select(:materia_id, Materia.order(:nome), :id, :nome, :prompt => false) %>
+    </div>
+
+  <div class="field">
+    <%= f.label :nota1 %><br>
+    <%= f.text_field :nota1 %>
+  </div>
+  <div class="field">
+    <%= f.label :nota2 %><br>
+    <%= f.text_field :nota2 %>
+  </div>
+  <div class="field">
+    <%= f.label :nota3 %><br>
+    <%= f.text_field :nota3 %>
+  </div>
+  <div class="field">
+    <%= f.label :nota4 %><br>
+    <%= f.text_field :nota4 %>
+  </div>
+
+    <!-- Botão voltar -->
+    <%= f.submit class: "btn btn-primary", remote: false do %>
+        <i class="icon-share-alt icon-white"></i>
+    <% end %>
+<% end %>

@@ -1,0 +1,35 @@
+<%= form_for(@turma_materia) do |f| %>
+
+    <!-- Mostra os erros -->
+    <% if @turma_materia.errors.any? %>
+        <div id="error_explanation">
+          <h2><strong>Erros no preenchimento, verifique</strong></h2>
+          <ul>
+            <% @turma_materia.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <!-- legenda -->
+    <legend><%=  %>Turma e Materia</legend>
+
+    <!-- mostra informações no select -->
+    <div class="field">
+      <%= f.label :Turma %><br>
+      <%= f.collection_select(:turma_id, Turma.order(:nome), :id, :nome, :prompt => false) %>
+    </div>
+
+    <!-- mostra informações no select -->
+    <div class="field">
+      <%= f.label :Matéria %><br>
+      <%= f.collection_select(:materia_id, Materia.order(:nome), :id, :nome, :prompt => false) %>
+    </div>
+
+
+    <!-- Botão gravar -->
+    <%= f.submit class: "btn btn-primary", remote: false do %>
+        <i class="icon-share-alt icon-white"></i>
+    <% end %>
+<% end %>

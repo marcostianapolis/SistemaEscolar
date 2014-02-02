@@ -1,0 +1,60 @@
+<!-- Caixa com fundo branco -->
+<div class="box-header well">
+
+  <!-- legenda -->
+  <legend>Lista de Professores</legend>
+
+  <!-- Pesquisa -->
+  <form class="navbar-form pull-right" style="padding-bottom: 20px;">
+    <%= form_tag professores_url, :method => :get, class: "navbar-search pull-right" do %>
+        <%= text_field_tag(:query, ((params[:query])? params[:query].to_s : nil ), placeholder: "Pesquisar", class: "search-query") %>
+        <%= submit_tag 'Buscar', :disable_with => "Buscando..." , :class=> "btn" %>
+    <% end %>
+  </form>
+
+  <!-- tabela com a listagem -->
+  <table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Cadastrado em</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @professores.each do |professor| %>
+      <tr>
+        <td><%= professor.nome %></td>
+
+        <!-- apresentar a data de criação no banco -->
+        <td><%= professor.created_at.strftime("%d/%m/%Y")  %></td>
+
+        <!-- Visualizar -->
+        <td width="30px">
+          <%= link_to professor, class: "btn btn-info", remote: false do %>
+              <i class="icon-eye-open icon-white"></i>
+          <% end %>
+        </td>
+
+        <!-- editar -->
+        <td width="30px">
+          <%= link_to edit_professor_path(professor), class: "btn btn-success", remote: false do %>
+              <i class="icon-edit icon-white"></i>
+          <% end %>
+        </td>
+
+        <!-- Deletar -->
+        <td width="30px">
+          <%= link_to professor, method: :delete, data: { confirm: 'Você tem certeza?' } , class: "btn btn-danger", remote: false do %>
+              <i class="icon-trash icon-white"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </table>
+</div>
+
+<!-- Btn add -->
+<%= link_to 'Adicionar professor', new_professor_path, :class => 'btn' %>
+

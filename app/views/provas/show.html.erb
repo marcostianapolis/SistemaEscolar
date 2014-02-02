@@ -1,0 +1,45 @@
+
+<!-- Caixa com fundo branco -->
+<div class="box-header well">
+
+  <!-- Legenda -->
+  <legend>Prova</legend>
+
+  <p>
+    <strong>Aluno:</strong>
+    <%= @prova.aluno.nome %>
+  </p>
+
+  <p>
+    <strong>Materia:</strong>
+    <%= @prova.materia.nome %>
+  </p>
+
+  <p>
+    <strong>1ª nota:</strong>
+    <%= @prova.nota1 %>
+  </p>
+
+  <p>
+    <strong>2ª nota:</strong>
+    <%= @prova.nota2 %>
+  </p>
+
+  <p>
+    <strong>3ª nota:</strong>
+    <%= @prova.nota3 %>
+  </p>
+
+  <p>
+    <strong>4ª nota:</strong>
+    <%= @prova.nota4 %>
+  </p>
+</div>
+<!-- Botão voltar -->
+<%= link_to 'Editar', edit_prova_path, :class => 'btn' %>
+<%= link_to 'Voltar', provas_path, :class => 'btn' %>
+
+<!-- destaca botão/menu fixo  -->
+<script>
+    menu = "#provas"
+</script>

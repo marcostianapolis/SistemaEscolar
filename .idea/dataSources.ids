@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Rails SisEscolar: development" uuid="bcae7dff-eb9a-4e5b-ac48-e9f9bb64e0d8">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails SisEscolar: test" uuid="65125c8f-a625-4017-810b-ed3506a97b95">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+  <data-source source="LOCAL" name="Rails SisEscolar: production" uuid="524f8f02-fb19-47da-8e9e-c40dacf018d3">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
+</component>

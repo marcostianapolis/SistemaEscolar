@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  aluno_id: 1
+  materia_id: 1
+  nota1: 9.99
+  nota2: 9.99
+  nota3: 9.99
+  nota4: 9.99
+
+two:
+  aluno_id: 1
+  materia_id: 1
+  nota1: 9.99
+  nota2: 9.99
+  nota3: 9.99
+  nota4: 9.99

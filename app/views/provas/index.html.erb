@@ -1,0 +1,83 @@
+<!-- Caixa com fundo branco -->
+<div class="box-header well">
+
+  <!-- legenda -->
+  <legend>Lista de Provas</legend>
+
+  <!-- Pesquisa -->
+  <form class="navbar-form pull-left" style="padding-bottom: 20px;">
+    <%= form_tag alunos_path, method: :get do  %>
+        <!-- mostra informações no select -->
+        <div class="field">
+          <%= label :form, :Aluno %><br>
+          <%= collection_select(:form, :aluno_id, Aluno.order(:nome), :id, :nome, :prompt => false) %>
+          <%= submit_tag 'Buscar', :disable_with => "Buscando..." , :class=> "btn" %>
+        </div>
+    <% end %>
+  </form>
+
+  <!-- tabela com a listagem -->
+  <table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+      <th>Aluno</th>
+      <th>Matéria</th>
+      <th>1ª Nota</th>
+      <th>2ª Nota</th>
+      <th>3ª Nota</th>
+      <th>4ª Nota</th>
+      <th>Resultado</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @provas.each do |prova| %>
+      <tr>
+        <td><%= prova.aluno.nome %></td>
+        <td><%= prova.materia.nome %></td>
+        <td><%= prova.nota1 %></td>
+        <td><%= prova.nota2 %></td>
+        <td><%= prova.nota3 %></td>
+        <td><%= prova.nota4 %></td>
+        <td>
+           <!-- aprovado fica verde se não laranja -->
+           <span class="
+                   <%= prova.cor_resultado %>">
+                   <%= prova.resultado %>
+           </span>
+        </td>
+
+
+        <!-- Visualizar -->
+        <td width="30px">
+          <%= link_to prova, class: "btn btn-info", remote: false do %>
+              <i class="icon-eye-open icon-white"></i>
+          <% end %>
+        </td>
+
+        <!-- editar -->
+        <td width="30px">
+          <%= link_to edit_prova_path(prova), class: "btn btn-success", remote: false do %>
+              <i class="icon-edit icon-white"></i>
+          <% end %>
+        </td>
+
+        <!-- Deletar -->
+        <td width="30px">
+          <%= link_to prova, method: :delete, data: { confirm: 'Você tem certeza?' } , class: "btn btn-danger", remote: false do %>
+              <i class="icon-trash icon-white"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </table>
+</div>
+
+<!-- Btn add -->
+<%= link_to 'Lançar Provas', new_prova_path, :class => 'btn' %>
+
+<!-- destaca botão/menu fixo  -->
+<script>
+    menu = "#provas"
+</script>

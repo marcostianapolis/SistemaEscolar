@@ -1,0 +1,17 @@
+<!-- Caixa com fundo branco -->
+<div class="box-header well">
+
+  <!-- Legenda -->
+  <legend>Professor</legend>
+
+  <p>
+    <b>Nome:</b>
+    <%= @professor.nome %>
+  </p>
+
+</div>
+
+<!-- Botão voltar -->
+<%= link_to 'Editar', edit_professor_path, :class => 'btn' %>
+<%= link_to 'Voltar', professores_path, :class => 'btn' %>
+

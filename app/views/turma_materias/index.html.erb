@@ -1,0 +1,60 @@
+<!-- Caixa com fundo branco -->
+<div class="box-header well">
+
+  <!-- legenda -->
+  <legend>Lista de Turma e Matérias</legend>
+
+  <!-- Pesquisa -->
+  <form class="navbar-form pull-left" style="padding-bottom: 20px;">
+  <%= form_tag turma_materias_path, method: :get do  %>
+      <!-- mostra informações no select -->
+      <div class="field">
+        <%= label :form, :Turma %><br>
+        <%= collection_select(:form, :turma_id, Turma.order(:nome), :id, :nome, :prompt => false) %>
+        <%= submit_tag 'Buscar', :disable_with => "Buscando..." , :class=> "btn" %>
+      </div>
+  <% end %>
+  </form>
+
+  <!-- tabela com a listagem -->
+  <table class="table table-hover table-bordered">
+    <thead>
+    <tr>
+      <th>Turma</th>
+      <th>Matéria</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @turma_materias.each do |turma_materia| %>
+      <tr>
+        <td><%= turma_materia.turma.nome %></td>
+        <td><%= turma_materia.materia.nome %></td>
+
+        <!-- Visualizar -->
+        <td width="30px">
+          <%= link_to turma_materia, class: "btn btn-info", remote: false do %>
+              <i class="icon-eye-open icon-white"></i>
+          <% end %>
+        </td>
+
+
+        <!-- Deletar -->
+        <td width="30px">
+          <%= link_to turma_materia, method: :delete, data: { confirm: 'Você tem certeza?' } , class: "btn btn-danger", remote: false do %>
+              <i class="icon-trash icon-white"></i>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  </table>
+</div>
+
+<!-- Btn add -->
+<%= link_to 'Adicionar matéria a turma', new_turma_materia_path, :class => 'btn' %>
+
+<!-- destaca botão/menu fixo  -->
+<script>
+    menu = "#turmas"
+</script>

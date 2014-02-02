@@ -1,0 +1,27 @@
+<%= form_for(@turma) do |f| %>
+    <!-- legenda -->
+    <legend><%=  %>Turmas</legend>
+
+    <!-- Mostra os erros -->
+    <% if @turma.errors.any? %>
+        <div id="error_explanation">
+          <h2><strong>Erros no preenchimento, verifique</strong></h2>
+          <ul>
+            <% @turma.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <!-- mostra informações -->
+    <div class="field">
+      <%= f.label :nome %><br />
+      <%= f.text_field :nome %>
+    </div>
+
+    <!-- Botão voltar -->
+    <%= f.submit class: "btn btn-primary", remote: false do %>
+        <i class="icon-share-alt icon-white"></i>
+    <% end %>
+<% end %>

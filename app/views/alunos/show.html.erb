@@ -1,0 +1,26 @@
+<!-- Caixa com fundo branco -->
+<div class="box-header well">
+
+  <!-- Legenda -->
+  <legend>Aluno</legend>
+
+  <p>
+    <b>Nome:</b>
+    <%= @aluno.nome %>
+  </p>
+
+  <p>
+    <b>Turma:</b>
+    <%= @aluno.turma_id %>
+  </p>
+
+</div>
+
+<!-- Botão voltar -->
+<%= link_to 'Editar', edit_aluno_path, :class => 'btn' %>
+<%= link_to 'Voltar', alunos_path, :class => 'btn' %>
+
+<!-- destaca botão/menu fixo  -->
+<script>
+    menu = "#matriculas"
+</script>

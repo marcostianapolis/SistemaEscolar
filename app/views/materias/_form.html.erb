@@ -1,0 +1,33 @@
+<%= form_for(@materia) do |f| %>
+    <!-- legenda -->
+    <legend><%=  %>Matéria</legend>
+
+    <!-- Mostra os erros -->
+    <% if @materia.errors.any? %>
+        <div id="error_explanation">
+          <h2><strong>Erros no preenchimento, verifique</strong></h2>
+          <ul>
+            <% @materia.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <!-- mostra informações -->
+    <div class="field">
+      <%= f.label :nome %><br />
+      <%= f.text_field :nome %>
+    </div>
+
+    <!-- mostra informações no select -->
+    <div class="field">
+      <%= f.label :professor %><br>
+      <%= f.collection_select(:professor_id, Professor.order(:nome), :id, :nome, :prompt => false) %>
+    </div>
+
+    <!-- Botão voltar -->
+    <%= f.submit class: "btn btn-primary", remote: false do %>
+        <i class="icon-share-alt icon-white"></i>
+    <% end %>
+<% end %>

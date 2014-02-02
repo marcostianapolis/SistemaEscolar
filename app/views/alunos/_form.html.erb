@@ -1,0 +1,35 @@
+<!-- legenda -->
+<legend>Matrícula</legend>
+
+<!-- Mostra os erros -->
+<% if @aluno.errors.any? %>
+<div id="error_explanation">
+  <h2><strong>Erros no preenchimento, verifique</strong></h2>
+  <ul>
+    <% @aluno.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for(@aluno) do |f| %>
+
+    <!-- Combo box com as turmas permitidas, maio que 5 materias -->
+    <div class="field">
+      <%= f.label :Turma %><br>
+      <!-- Carregando a combo com os professores cadastrados no sistema e com o texto: Selecione um Professor -->
+      <%= f.select(:turma_id, @turmas.collect {|p| [ p.nome, p.id ] }, { :selected => @aluno.turma_id}) %>
+    </div>
+
+    <!-- mostra informações -->
+    <div class="field">
+      <%= f.label :nome %><br />
+      <%= f.text_field :nome %>
+    </div>
+
+    <!-- Botão voltar -->
+    <%= f.submit class: "btn btn-primary", remote: false do %>
+        <i class="icon-share-alt icon-white"></i>
+    <% end %>
+<% end %>
